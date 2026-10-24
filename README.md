@@ -20,9 +20,13 @@ dsh plugin --profile desktop add "C:\Downloads\dsh-research-toolkit-0.3.0.tgz"
 
 ## 在 DSH 中这样开始
 
-> 先检查本机有哪些可用科研软件。用 MATLAB 比较三组质量、刚度和阻尼条件，输出模态频率、位移随时间的曲线和能量平衡图；保留脚本和数据，核对结果，再给我一段能放进组会汇报的说明。
+> 帮我检测本机可用的科研软件，整理一份简报：有哪些软件、分别能做什么、当前是否已有可用桥接，还有哪些需要配置或补充适配。然后询问我是否建立桥接，以及希望优先接入哪些软件。
 
-Agent 将研究目标整理为明确作业，调用以下五个工具：
+首次使用时，Agent 先调用 `research_catalog` 与 `research_discover`，整理软件清单、可用能力和桥接状态。发现程序文件与确认软件可正常调用分别记录；版本、许可或接口无法确认时，在简报中标明待核实。
+
+简报结束后，Agent 询问：**“是否为这些软件建立或完善桥接？你希望优先接入哪些？”** 用户确定范围后，再配置已有适配器，或按指南研究新的桥接接口；之后由用户提出自己的研究任务。
+
+插件提供以下五个工具，分别用于环境检查和后续任务执行：
 
 | 工具 | 用途 |
 |---|---|
@@ -32,7 +36,7 @@ Agent 将研究目标整理为明确作业，调用以下五个工具：
 | `research_run` | 调用软件并保存输出 |
 | `research_acceptance_report` | 读取执行与产物核验记录 |
 
-作业格式见 [作业契约](docs/jobs.md)，可直接使用 [MATLAB 复杂任务示例](scenarios/chain_dynamics/jobs) 和 [统计学示例](scenarios/statistics)。
+后续研究作业的格式见 [作业契约](docs/jobs.md)。[MATLAB 弹簧链任务](scenarios/chain_dynamics/jobs) 和 [统计学示例](scenarios/statistics) 用于开发核查、回归与验收，可供适配器开发者参考。
 
 ## 软件范围
 
