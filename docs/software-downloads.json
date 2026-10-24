@@ -1,0 +1,170 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-10-25",
+  "platform": "Windows x86-64",
+  "note": "Official acquisition links; binaries are not part of the plugin. All components retain upstream licenses. Versions describe selected collection targets, not a claim of plugin native acceptance.",
+  "software": [
+    {
+      "id": "octave",
+      "name": "GNU Octave",
+      "version": "11.3.0",
+      "official_page": "https://www.octave.org/download",
+      "license": "GPL-3.0-or-later + bundled components",
+      "source_code": "https://ftp.gnu.org/gnu/octave/",
+      "url": null
+    },
+    {
+      "id": "julia",
+      "name": "Julia",
+      "version": "1.13.2",
+      "official_page": "https://julialang.org/downloads/manual-downloads/",
+      "license": "MIT + bundled components",
+      "source_code": "https://github.com/JuliaLang/julia",
+      "url": null
+    },
+    {
+      "id": "graphviz",
+      "name": "Graphviz",
+      "version": "16.1.0",
+      "official_page": "https://graphviz.org/download/",
+      "license": "EPL-2.0 + bundled components",
+      "source_code": "https://gitlab.com/graphviz/graphviz",
+      "url": null
+    },
+    {
+      "id": "imagej",
+      "name": "ImageJ",
+      "version": "1.54 + bundled Java 8",
+      "official_page": "https://imagej.net/ij/download.html",
+      "license": "ImageJ public domain; bundled Java has separate licenses",
+      "source_code": "https://imagej.net/ij/download/src/",
+      "url": null
+    },
+    {
+      "id": "libreoffice",
+      "name": "LibreOffice",
+      "version": "26.8.1",
+      "official_page": "https://www.libreoffice.org/download/download-libreoffice/",
+      "license": "MPL-2.0 + bundled components",
+      "source_code": "https://download.documentfoundation.org/libreoffice/src/26.8.1/",
+      "url": null
+    },
+    {
+      "id": "inkscape",
+      "name": "Inkscape",
+      "version": "1.4.4",
+      "official_page": "https://inkscape.org/release/inkscape-1.4.4/",
+      "license": "GPL-2.0-or-later + bundled components",
+      "source_code": "https://inkscape.org/release/inkscape-1.4.4/source/",
+      "url": null
+    },
+    {
+      "id": "r",
+      "name": "R",
+      "version": "4.6.1",
+      "official_page": "https://cran.r-project.org/bin/windows/base/",
+      "license": "GPL-2.0-or-later / GPL-3.0-or-later",
+      "source_code": "https://cran.r-project.org/src/base/R-4/",
+      "url": "https://cran.r-project.org/bin/windows/base/R-4.6.1-win.exe"
+    },
+    {
+      "id": "zotero",
+      "name": "Zotero",
+      "version": "10.0.6",
+      "official_page": "https://www.zotero.org/download/",
+      "license": "AGPL-3.0 + bundled components",
+      "source_code": "https://github.com/zotero/zotero/tree/10.0.6",
+      "url": "https://download.zotero.org/client/release/10.0.6/Zotero-10.0.6_win-x64.zip"
+    },
+    {
+      "id": "latex",
+      "name": "MiKTeX",
+      "version": "25.12 basic installer",
+      "official_page": "https://miktex.org/download",
+      "license": "Mixed open-source licenses; TeX packages retain individual licenses",
+      "source_code": "https://github.com/MiKTeX/miktex",
+      "url": "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/basic-miktex-25.12-x64.exe"
+    },
+    {
+      "id": "rstudio",
+      "name": "RStudio Desktop Open Source",
+      "version": "2026.10.0-233",
+      "official_page": "https://docs.posit.co/ide/user/download.html",
+      "license": "AGPL-3.0 + bundled components",
+      "source_code": "https://github.com/rstudio/rstudio",
+      "url": "https://download1.rstudio.org/electron/windows/RStudio-2026.10.0-233.exe"
+    },
+    {
+      "id": "jasp",
+      "name": "JASP",
+      "version": "0.99.0.0",
+      "official_page": "https://jasp-stats.org/download/",
+      "license": "Desktop AGPL-3.0; engine GPL-2.0; bundled components",
+      "source_code": "https://github.com/jasp-stats/jasp-desktop/tree/v0.99.0",
+      "url": "https://github.com/jasp-stats/jasp-desktop/releases/download/v0.99.0/JASP-0.99.0.0-Windows.zip"
+    },
+    {
+      "id": "pandoc",
+      "name": "Pandoc",
+      "version": "3.12.1",
+      "official_page": "https://github.com/jgm/pandoc/releases/tag/3.12.1",
+      "license": "GPL-2.0-or-later",
+      "source_code": "https://github.com/jgm/pandoc/tree/3.12.1",
+      "url": "https://github.com/jgm/pandoc/releases/download/3.12.1/pandoc-3.12.1-windows-x86_64.zip"
+    },
+    {
+      "id": "quarto",
+      "name": "Quarto",
+      "version": "v1.10.19",
+      "official_page": "https://github.com/quarto-dev/quarto-cli/releases/tag/v1.10.19",
+      "license": "GPL-2.0",
+      "source_code": "https://github.com/quarto-dev/quarto-cli/tree/v1.10.19",
+      "url": "https://github.com/quarto-dev/quarto-cli/releases/download/v1.10.19/quarto-1.10.19-win.zip"
+    },
+    {
+      "id": "jabref",
+      "name": "JabRef",
+      "version": "v5.15",
+      "official_page": "https://github.com/JabRef/jabref/releases/tag/v5.15",
+      "license": "MIT",
+      "source_code": "https://github.com/JabRef/jabref/tree/v5.15",
+      "url": "https://github.com/JabRef/jabref/releases/download/v5.15/JabRef-5.15-portable_windows.zip"
+    },
+    {
+      "id": "git",
+      "name": "Git for Windows",
+      "version": "v2.56.0.windows.3",
+      "official_page": "https://github.com/git-for-windows/git/releases/tag/v2.56.0.windows.3",
+      "license": "GPL-2.0 + bundled components",
+      "source_code": "https://github.com/git-for-windows/git/tree/v2.56.0.windows.3",
+      "url": "https://github.com/git-for-windows/git/releases/download/v2.56.0.windows.3/PortableGit-2.56.0.3-64-bit.7z.exe"
+    },
+    {
+      "id": "jamovi",
+      "name": "jamovi / jmv backend",
+      "version": "2.7.39",
+      "official_page": "https://www.jamovi.org/",
+      "license": "Desktop AGPL-3.0; jmv GPL-2.0-or-later",
+      "source_code": "https://github.com/jamovi/jamovi",
+      "url": "https://www.jamovi.org/downloads/jamovi-2.7.39.0-win64.exe"
+    },
+    {
+      "id": "python",
+      "name": "Scientific Python",
+      "version": "CPython 3.12 + project locked scientific dependencies",
+      "official_page": "https://www.python.org/downloads/; https://pypi.org/",
+      "license": "PSF plus dependency licenses",
+      "source_code": "https://github.com/python/cpython",
+      "url": null
+    },
+    {
+      "id": "jupyter",
+      "name": "JupyterLab / nbconvert / ipykernel",
+      "version": "project locked versions",
+      "official_page": "https://jupyter.org/install",
+      "license": "BSD-3-Clause plus dependency licenses",
+      "source_code": "https://github.com/jupyterlab/jupyterlab",
+      "url": null
+    }
+  ]
+}
