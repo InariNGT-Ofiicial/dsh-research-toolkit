@@ -1,0 +1,55 @@
+{
+  "name": "dsh-research-toolkit",
+  "version": "0.3.0",
+  "description": "Local research software discovery, native job compilation, execution and evidence-based acceptance for DSH",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=24",
+    "dsh": "0.2.1-rc.2"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "src/*.js",
+    "runtime/*.py",
+    "research_bridge/**/*.py",
+    "scenarios/**/*.py",
+    "scenarios/**/*.R",
+    "scenarios/**/*.json",
+    "scenarios/**/*.md",
+    "skills/**/SKILL.md",
+    "tests/*.mjs",
+    "tests/*.py",
+    "scripts/*.mjs",
+    "scripts/*.py",
+    "scripts/*.ps1",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "docs/**",
+    "tests/fixtures/*.xsd",
+    "tests/fixtures/*.json",
+    "THIRD_PARTY_NOTICES.md",
+    "requirements-acceptance.txt"
+  ],
+  "scripts": {
+    "test:dsh": "node --test tests/dsh-host.test.mjs tests/skill-tool-native.test.mjs",
+    "pack:check": "npm pack --dry-run --json"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "research",
+    "statistics",
+    "scientific-computing",
+    "local-first"
+  ]
+}

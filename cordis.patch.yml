@@ -1,0 +1,9 @@
+# Native DSH bundle patch. Relative Python/runtime paths are resolved by src/index.js.
+# Empty workspaceRoot uses <DSH launch working directory>/research-workspace.
+- insert:
+    - id: research-toolkit
+      name: dsh-research-toolkit
+      config:
+        pythonPath: ''
+        workspaceRoot: ''
+        maxTimeoutSeconds: 600

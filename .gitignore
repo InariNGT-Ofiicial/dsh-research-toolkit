@@ -1,0 +1,9 @@
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.*
+!*.example
+build/
+research-workspace/
+tests/_tmp/

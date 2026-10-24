@@ -1,0 +1,14 @@
+{
+  "access_date": "2026-10-24",
+  "standard": "REFI-QDA Codebook 1.0",
+  "primary_documentation": "https://www.qdasoftware.org/codebook-implementation-files",
+  "primary_download": "https://web.tresorit.com/l/udW7x",
+  "primary_schema_uri": "http://schema.qdasoftware.org/versions/Codebook/v1.0/Codebook.xsd",
+  "download_source": "https://raw.githubusercontent.com/openqda/refi-tools/main/docs/schemas/codebook/v1.0/Codebook.xsd",
+  "source_kind": "OpenQDA mirror of the REFI-QDA standard; official primary documentation independently confirms Codebook format and import/export expectation",
+  "github_blob_sha1": "40b33ddc5ab496a0a5a85836e9cbc72ac7d316ae",
+  "sha256": "bc4706a6fdb736cc3248de1753366f2b1f5b13e6828d319cea2874deb7e61b52",
+  "bytes": 3003,
+  "retrieval_notes": "Official primary download renders a JavaScript-only Tresorit viewer in browser tooling. The mirror was read by web and GitHub connector independently; downloaded bytes exactly match the GitHub blob identity.",
+  "runtime_dependency": false
+}

@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:dsh-research-toolkit:bridge-candidate:v1",
+  "title": "Research bridge candidate evidence",
+  "description": "Structural evidence gates only. References, hashes, target identity and scientific results must be independently checked; filling a boolean is not verification.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "candidate_id", "phase", "target", "operation", "interface", "workspace", "capability", "gates", "evidence", "decision"],
+  "properties": {
+    "schema_version": {"const": "research.bridge.candidate.v1"},
+    "candidate_id": {"type": "string", "pattern": "^[a-z][a-z0-9-]{1,63}$"},
+    "phase": {"enum": ["researching", "blocked", "prototype_ready", "ready_for_catalog", "native_verified", "interchange_verified"]},
+    "target": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "observed_version", "executable", "executable_sha256", "license"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "observed_version": {"type": ["string", "null"]},
+        "executable": {"type": ["string", "null"]},
+        "executable_sha256": {"oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]},
+        "license": {
+          "type": "object", "additionalProperties": false,
+          "required": ["kind", "state", "public_evidence"],
+          "properties": {
+            "kind": {"enum": ["free", "commercial", "unknown"]},
+            "state": {"enum": ["available", "missing", "unverified", "not_applicable"]},
+            "public_evidence": {"type": ["string", "null"], "description": "Public feature/license-check result only; never a key, serial, license-file contents or account credential."}
+          }
+        }
+      }
+    },
+    "operation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["engine_id", "name", "requested_behavior", "supported_scope", "excluded_scope"],
+      "properties": {
+        "engine_id": {"type": "string", "minLength": 1},
+        "name": {"type": "string", "minLength": 1},
+        "requested_behavior": {"type": "string", "minLength": 1},
+        "supported_scope": {"type": "array", "items": {"type": "string"}},
+        "excluded_scope": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "interface": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "official_sources", "verified_invocation", "ownership"],
+      "properties": {
+        "kind": {"enum": ["undetermined", "native_cli", "native_api", "com", "local_api", "file_interchange", "no_interface"]},
+        "official_sources": {
+          "type": "array", "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["source_uri", "title", "accessed_utc", "applicable_version", "supported_claim"],
+            "properties": {
+              "source_uri": {"type": "string", "minLength": 1},
+              "title": {"type": "string", "minLength": 1},
+              "accessed_utc": {"type": "string", "format": "date-time"},
+              "applicable_version": {"type": "string", "minLength": 1},
+              "supported_claim": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "verified_invocation": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["kind", "argv_or_api", "shell", "timeout_s"],
+          "properties": {
+            "kind": {"enum": ["argv", "api"]},
+            "argv_or_api": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+            "shell": {"const": false},
+            "timeout_s": {"type": "number", "exclusiveMinimum": 0, "maximum": 1800}
+          }
+        },
+        "ownership": {"enum": ["unestablished", "task_owned_instance", "existing_read_only", "no_process"]}
+      }
+    },
+    "workspace": {
+      "type": "object", "additionalProperties": false,
+      "required": ["study_root", "control_root", "prototype_dir", "run_root", "inputs"],
+      "properties": {
+        "study_root": {"type": "string", "minLength": 1},
+        "control_root": {"type": "string", "minLength": 1},
+        "prototype_dir": {"type": "string", "minLength": 1},
+        "run_root": {"type": "string", "minLength": 1},
+        "inputs": {"type": "array", "items": {"$ref": "#/$defs/fileRef"}}
+      }
+    },
+    "capability": {
+      "type": "object", "additionalProperties": false,
+      "required": ["mode", "application_verified", "catalog_integrated"],
+      "properties": {
+        "mode": {"enum": ["unverified", "native", "local_api", "file_interchange"]},
+        "application_verified": {"type": "boolean"},
+        "catalog_integrated": {"type": "boolean"}
+      }
+    },
+    "gates": {
+      "type": "object", "additionalProperties": false,
+      "required": ["official_interface", "license_available", "native_identity", "independent_oracle", "negative_controls", "repeated_runs", "dsh_agent"],
+      "properties": {
+        "official_interface": {"type": "boolean"}, "license_available": {"type": "boolean"},
+        "native_identity": {"type": "boolean"}, "independent_oracle": {"type": "boolean"},
+        "negative_controls": {"type": "boolean"}, "repeated_runs": {"type": "boolean"},
+        "dsh_agent": {"type": "boolean"}
+      }
+    },
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["attempts", "source_files", "native_runs", "interchange_runs", "scientific_oracles", "negative_controls", "repetition", "dsh_agent"],
+      "properties": {
+        "attempts": {"type": "array", "items": {"$ref": "#/$defs/attempt"}},
+        "source_files": {"type": "array", "items": {"$ref": "#/$defs/fileRef"}},
+        "native_runs": {"type": "array", "items": {"$ref": "#/$defs/nativeRun"}},
+        "interchange_runs": {"type": "array", "items": {"$ref": "#/$defs/fileRef"}},
+        "scientific_oracles": {"type": "array", "items": {"$ref": "#/$defs/oracle"}},
+        "negative_controls": {"type": "array", "items": {"$ref": "#/$defs/fileRef"}},
+        "repetition": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/repetition"}]},
+        "dsh_agent": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/agentProof"}]}
+      }
+    },
+    "decision": {
+      "type": "object", "additionalProperties": false,
+      "required": ["blockers", "permitted_claim", "next_action"],
+      "properties": {
+        "blockers": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "permitted_claim": {"type": "string", "minLength": 1},
+        "next_action": {"type": "string", "minLength": 1}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"phase": {"const": "blocked"}}},
+      "then": {"properties": {"capability": {"properties": {"application_verified": {"const": false}}}, "decision": {"properties": {"blockers": {"minItems": 1}}}}}
+    },
+    {
+      "if": {"properties": {"capability": {"properties": {"mode": {"const": "file_interchange"}}}}},
+      "then": {"properties": {"capability": {"properties": {"application_verified": {"const": false}}}, "phase": {"not": {"const": "native_verified"}}}}
+    },
+    {
+      "if": {"properties": {"interface": {"properties": {"kind": {"const": "file_interchange"}}}}},
+      "then": {"properties": {"capability": {"properties": {"mode": {"enum": ["unverified", "file_interchange"]}, "application_verified": {"const": false}}}}}
+    },
+    {
+      "if": {"properties": {"capability": {"properties": {"application_verified": {"const": true}}}}},
+      "then": {"properties": {"phase": {"const": "native_verified"}}}
+    },
+    {
+      "if": {"properties": {"phase": {"enum": ["ready_for_catalog", "native_verified", "interchange_verified"]}}},
+      "then": {
+        "properties": {
+          "interface": {"properties": {"kind": {"enum": ["native_cli", "native_api", "com", "local_api", "file_interchange"]}, "official_sources": {"minItems": 1}, "verified_invocation": {"type": "object"}}},
+          "capability": {"properties": {"mode": {"enum": ["native", "local_api", "file_interchange"]}}},
+          "target": {"properties": {"observed_version": {"type": "string", "minLength": 1}, "license": {"properties": {"state": {"enum": ["available", "not_applicable"]}}}}},
+          "gates": {"properties": {"official_interface": {"const": true}, "license_available": {"const": true}, "independent_oracle": {"const": true}, "negative_controls": {"const": true}, "repeated_runs": {"const": true}}},
+          "evidence": {"properties": {"source_files": {"minItems": 1}, "scientific_oracles": {"minItems": 1}, "negative_controls": {"minItems": 1}, "repetition": {"$ref": "#/$defs/repetition"}}},
+          "decision": {"properties": {"blockers": {"maxItems": 0}}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"phase": {"const": "native_verified"}}},
+      "then": {
+        "properties": {
+          "capability": {"properties": {"mode": {"enum": ["native", "local_api"]}, "application_verified": {"const": true}, "catalog_integrated": {"const": true}}},
+          "interface": {"properties": {"kind": {"enum": ["native_cli", "native_api", "com", "local_api"]}, "ownership": {"enum": ["task_owned_instance", "existing_read_only"]}}},
+          "gates": {"properties": {"native_identity": {"const": true}, "dsh_agent": {"const": true}}},
+          "evidence": {"properties": {"native_runs": {"minItems": 1}, "dsh_agent": {"$ref": "#/$defs/agentProof"}}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"phase": {"const": "interchange_verified"}}},
+      "then": {"properties": {"capability": {"properties": {"mode": {"const": "file_interchange"}, "application_verified": {"const": false}, "catalog_integrated": {"const": true}}}, "gates": {"properties": {"dsh_agent": {"const": true}}}, "evidence": {"properties": {"interchange_runs": {"minItems": 1}, "dsh_agent": {"$ref": "#/$defs/agentProof"}}}}}
+    },
+    {
+      "if": {"properties": {"phase": {"enum": ["ready_for_catalog", "native_verified"]}, "capability": {"properties": {"mode": {"enum": ["native", "local_api"]}}}}},
+      "then": {"properties": {"gates": {"properties": {"native_identity": {"const": true}}}, "evidence": {"properties": {"native_runs": {"minItems": 1}}}}}
+    },
+    {
+      "if": {"properties": {"target": {"properties": {"license": {"properties": {"kind": {"const": "commercial"}}}}}, "phase": {"enum": ["ready_for_catalog", "native_verified"]}}},
+      "then": {"properties": {"target": {"properties": {"license": {"properties": {"state": {"const": "available"}, "public_evidence": {"type": "string", "minLength": 1}}}}}}}
+    }
+  ],
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"},
+    "fileRef": {
+      "type": "object", "additionalProperties": false, "required": ["path", "sha256"],
+      "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "attempt": {
+      "type": "object", "additionalProperties": false,
+      "required": ["run_id", "status", "observed_scope", "reason", "record"],
+      "properties": {
+        "run_id": {"type": "string", "minLength": 1},
+        "status": {"enum": ["compiled", "passed", "failed", "blocked"]},
+        "observed_scope": {"enum": ["unverified", "python_wrapper", "target_native", "file_interchange"]},
+        "reason": {"type": "string", "minLength": 1},
+        "record": {"$ref": "#/$defs/fileRef"}
+      }
+    },
+    "nativeRun": {
+      "type": "object", "additionalProperties": false,
+      "required": ["run_id", "execution_identity", "target_name", "target_version", "identity_evidence", "result", "artifacts", "exit_code", "timed_out"],
+      "properties": {
+        "run_id": {"type": "string", "minLength": 1},
+        "execution_identity": {"const": "target_native_backend"},
+        "target_name": {"type": "string", "minLength": 1}, "target_version": {"type": "string", "minLength": 1},
+        "identity_evidence": {"$ref": "#/$defs/fileRef"}, "result": {"$ref": "#/$defs/fileRef"},
+        "artifacts": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/fileRef"}},
+        "exit_code": {"const": 0}, "timed_out": {"const": false}
+      }
+    },
+    "oracle": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "independent", "status", "method", "verifier", "report"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1}, "independent": {"const": true}, "status": {"const": "passed"},
+        "method": {"type": "string", "minLength": 1, "description": "Report must include expected/observed values, preprocessing and declared tolerance or structural rule."},
+        "verifier": {"$ref": "#/$defs/fileRef"}, "report": {"$ref": "#/$defs/fileRef"}
+      }
+    },
+    "repetition": {
+      "type": "object", "additionalProperties": false, "required": ["run_count", "fresh_directories", "all_passed", "resource_limits", "report"],
+      "properties": {
+        "run_count": {"type": "integer", "minimum": 2}, "fresh_directories": {"const": true}, "all_passed": {"const": true},
+        "resource_limits": {"type": "string", "minLength": 1}, "report": {"$ref": "#/$defs/fileRef"}
+      }
+    },
+    "agentProof": {
+      "type": "object", "additionalProperties": false,
+      "required": ["session_id", "host_pid", "actual_provider", "actual_model", "source", "turn_end", "events", "native_results", "independent_readback", "cleanup"],
+      "properties": {
+        "session_id": {"type": "string", "minLength": 1}, "host_pid": {"type": "integer", "minimum": 1},
+        "actual_provider": {"type": "string", "minLength": 1}, "actual_model": {"type": "string", "minLength": 1},
+        "source": {"const": "actual_configured_model"}, "turn_end": {"const": "completed"},
+        "events": {"$ref": "#/$defs/fileRef"}, "native_results": {"$ref": "#/$defs/fileRef"},
+        "independent_readback": {"$ref": "#/$defs/fileRef"}, "cleanup": {"$ref": "#/$defs/fileRef"}
+      }
+    }
+  }
+}

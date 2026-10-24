@@ -1,0 +1,610 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Research job v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "engine",
+    "operation"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "research.job.v1"
+    },
+    "id": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "engine": {
+      "enum": [
+        "r",
+        "python",
+        "jamovi",
+        "spss",
+        "stata",
+        "sas",
+        "matlab",
+        "octave",
+        "julia",
+        "jupyter",
+        "pandoc",
+        "quarto",
+        "latex",
+        "libreoffice",
+        "office",
+        "inkscape",
+        "graphviz",
+        "imagej",
+        "zotero",
+        "jabref",
+        "endnote",
+        "nvivo",
+        "maxqda",
+        "atlas-ti",
+        "origin",
+        "prism",
+        "jasp",
+        "rstudio",
+        "git"
+      ]
+    },
+    "operation": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "parameters": {
+      "type": "object"
+    },
+    "timeout_s": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "maximum": 1800
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "r"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "script",
+              "analysis"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "python"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "script",
+              "analysis"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "jamovi"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "script",
+              "analysis"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "spss"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "probe",
+              "script",
+              "analysis"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "stata"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "script",
+              "analysis"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "sas"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "script",
+              "analysis"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "matlab"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "script",
+              "analysis",
+              "chain_dynamics"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "octave"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "script",
+              "analysis"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "julia"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "script",
+              "analysis"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "jupyter"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "execute"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "pandoc"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "convert"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "quarto"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "render"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "latex"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "render"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "libreoffice"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "convert"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "office"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "convert",
+              "recalculate"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "inkscape"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "export"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "graphviz"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "render"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "imagej"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "macro"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "zotero"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "search",
+              "item",
+              "children"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "jabref"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "bibliography"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "endnote"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "bibliography"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "nvivo"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "codebook",
+              "import_codebook"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "maxqda"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "codebook",
+              "import_codebook"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "atlas-ti"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "codebook",
+              "import_codebook"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "origin"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "script"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "prism"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "table"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "jasp"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "table"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "rstudio"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "project"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "engine": {
+            "const": "git"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "snapshot"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

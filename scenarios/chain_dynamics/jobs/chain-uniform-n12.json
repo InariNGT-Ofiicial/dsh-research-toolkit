@@ -1,0 +1,50 @@
+{
+  "schema_version": "research.job.v1",
+  "id": "chain-uniform-n12",
+  "engine": "matlab",
+  "operation": "chain_dynamics",
+  "inputs": {},
+  "parameters": {
+    "case": "uniform",
+    "n": 12,
+    "mass": {
+      "kind": "uniform",
+      "value": 1.0
+    },
+    "stiffness": {
+      "kind": "uniform",
+      "value": 100.0
+    },
+    "damping": {
+      "alpha": 0.02,
+      "beta": 0.0005
+    },
+    "forcing": {
+      "nodes": [
+        3,
+        7
+      ],
+      "amplitudes": [
+        0.6,
+        0.4
+      ],
+      "frequencies_hz": [
+        0.8,
+        2.1
+      ],
+      "phases": [
+        0.0,
+        0.7
+      ]
+    },
+    "t_end": 2.0,
+    "n_samples": 2001,
+    "solver": {
+      "rel_tol": 1e-09,
+      "abs_tol": 1e-11,
+      "max_step": 0.002
+    },
+    "plot": true
+  },
+  "timeout_s": 600
+}

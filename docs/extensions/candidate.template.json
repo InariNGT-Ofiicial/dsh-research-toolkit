@@ -1,0 +1,42 @@
+{
+  "schema_version": "research.bridge.candidate.v1",
+  "candidate_id": "candidate-target",
+  "phase": "blocked",
+  "target": {
+    "name": "<目标科研软件>",
+    "observed_version": null,
+    "executable": null,
+    "executable_sha256": null,
+    "license": {"kind": "unknown", "state": "unverified", "public_evidence": null}
+  },
+  "operation": {
+    "engine_id": "<尚未注册的engine-id>",
+    "name": "<待研究操作>",
+    "requested_behavior": "<用户要求的软件、科研方法与数据范围>",
+    "supported_scope": [],
+    "excluded_scope": ["尚未证明目标软件原生执行", "尚未并入catalog或完成DSH模型验收"]
+  },
+  "interface": {"kind": "undetermined", "official_sources": [], "verified_invocation": null, "ownership": "unestablished"},
+  "workspace": {
+    "study_root": "<new-study-root>",
+    "control_root": "<separate-persistent-control-root>",
+    "prototype_dir": "<new-study-root>/candidate/<engine-id>",
+    "run_root": "<new-study-root>/runs",
+    "inputs": []
+  },
+  "capability": {"mode": "unverified", "application_verified": false, "catalog_integrated": false},
+  "gates": {
+    "official_interface": false, "license_available": false, "native_identity": false,
+    "independent_oracle": false, "negative_controls": false, "repeated_runs": false, "dsh_agent": false
+  },
+  "evidence": {
+    "attempts": [], "source_files": [],
+    "native_runs": [], "interchange_runs": [], "scientific_oracles": [], "negative_controls": [],
+    "repetition": null, "dsh_agent": null
+  },
+  "decision": {
+    "blockers": ["模板未实现目标官方接口，未收集原生与科学证据"],
+    "permitted_claim": "候选接入研究材料；当前不构成已支持或已原生验证能力",
+    "next_action": "核对本机安装与公开接口，查对应版本官方资料，在隔离原型内研究。"
+  }
+}

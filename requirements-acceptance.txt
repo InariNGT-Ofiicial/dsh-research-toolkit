@@ -1,0 +1,17 @@
+# Bridge runtime uses the standard library. This optional environment runs tests.
+numpy==2.5.4
+scipy==1.18.1
+pandas==3.1.0
+statsmodels==0.15.0
+matplotlib==3.11.2
+scikit-learn==1.9.1
+sympy==1.14.0
+openpyxl==3.1.5
+jupyterlab==4.6.4
+nbconvert==7.17.2
+ipykernel==7.4.0
+lxml==6.1.3
+pypdf==6.21.2
+Pillow==13.0.0
+python-docx==1.2.0
+python-pptx==1.0.2
