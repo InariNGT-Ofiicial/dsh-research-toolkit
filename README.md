@@ -1,5 +1,7 @@
 # DSH 科研软件桥接插件
 
+[正式版 v0.3.1](https://github.com/InariNGT-Ofiicial/dsh-research-toolkit/releases/tag/v0.3.1) · 同时支持 DSH rc.2 / rc.3。
+
 兼容维护：同时支持 **DSH 0.2.1-rc.2 / rc.3**，保留旧版用法与设置。验证范围与复现见 [DSH 兼容说明](docs/DSH_COMPATIBILITY.md)。
 
 **科研软件太难用？让大肥鱼帮你调度。**
@@ -10,15 +12,15 @@
 
 ## 快速安装
 
-从 [Releases](https://github.com/InariNGT-Ofiicial/dsh-research-toolkit/releases) 下载 `dsh-research-toolkit-0.3.0.tgz`，或使用仓库 `dist/` 中的同一份包，在 DSH 插件管理器中导入并启用。
+从 [Releases](https://github.com/InariNGT-Ofiicial/dsh-research-toolkit/releases) 下载 `dsh-research-toolkit-0.3.1.tgz`，在 DSH 插件管理器中导入并启用。
 
 使用 DSH Desktop 随附命令行也可以安装：
 
 ```powershell
-dsh plugin --profile desktop add "C:\Downloads\dsh-research-toolkit-0.3.0.tgz"
+dsh plugin --profile desktop add "C:\Downloads\dsh-research-toolkit-0.3.1.tgz"
 ```
 
-运行环境：Windows、Node.js 24+、DSH 0.2.1-rc.2；Python 及对应科研软件需单独安装。插件配置项为 `pythonPath`、`workspaceRoot`、`maxTimeoutSeconds`。软件位置可通过 `research_discover` 检查；详情见 [安装与配置](docs/dsh-plugin.md)。
+运行环境：Windows、Node.js 24+、DSH 0.2.1-rc.2 / rc.3；Python 及对应科研软件需单独安装。插件配置项为 `pythonPath`、`workspaceRoot`、`maxTimeoutSeconds`。软件位置可通过 `research_discover` 检查；详情见 [安装与配置](docs/dsh-plugin.md)。
 
 ## 在 DSH 中这样开始
 
