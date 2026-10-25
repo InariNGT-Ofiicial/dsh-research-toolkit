@@ -1,11 +1,17 @@
-# 科研工具插件 v0.3.1
+# 科研工具插件 v0.4.0
 
-正式版本，同时支持 **DSH 0.2.1-rc.2 与 0.2.1-rc.3**。原有配置、工具名和人工设置保持兼容，无需宿主版本豁免。
+0.4.0 正式版同步本地集成功能，继续支持 **DSH 0.2.1-rc.2 与 0.2.1-rc.3**。版本声明为 `>=0.2.1-rc.2 <0.3.0`，无需宿主版本豁免。
 
-修复精确限定 rc.2 导致新版宿主拒绝安装的问题，保留现有五个科研工具与内嵌技能。
+新增 `research_integrations`，查询当前 Agent 可见的 MATLAB MCP、Zotero 工具及真实参数。原有五个科研工具、两个内嵌技能和 `pythonPath`、`workspaceRoot`、`maxTimeoutSeconds` 配置保持兼容。可选协同包独立安装，调用继续经过其原生 DSH 工具及权限管线。
 
-Windows / Linux × rc.2 / rc.3 的原生宿主兼容 CI 通过；本轮触发的原有回归 CI 全部通过。本地安装包还经过两个官方 npm 运行时及已安装 rc.3 Desktop 内置模块验证。
+从 [v0.4.0 正式发行页](https://github.com/InariNGT-Ofiicial/dsh-research-toolkit/releases/tag/v0.4.0) 下载 `dsh-research-toolkit-0.4.0.tgz` 和 `SHA256SUMS.txt`，核验后安装到实际使用的同一 profile：
 
-附件包含可安装的 `.tgz` 和 `SHA256SUMS.txt`。安装到实际使用的同一 profile 后重新加载插件或重启 DSH。外部 Python 工程、科研软件及模型按 README 单独准备。
+```powershell
+dsh plugin --profile desktop add "C:\Downloads\dsh-research-toolkit-0.4.0.tgz"
+```
 
-本次兼容验收未运行 GPU 训练/翻唱、模型 API 或真实平台写入；宿主模块测试不代表 Desktop UI 全业务验收。验证边界与复现见 [DSH_COMPATIBILITY.md](docs/DSH_COMPATIBILITY.md)。
+刷新插件或重启 DSH 后，科研插件应显示 0.4.0 并处于运行中。科研软件、Python 环境、模型及许可证仍需单独准备，安装过程不携带本机配置、研究数据或文献库。
+
+Windows / Linux × rc.2 / rc.3 的四组打包分发兼容 CI 通过。公开正式包的 79 个文件与本地集成版逐字节一致；详细功能与既有真实应用验收范围见 [0.4.0 发布说明](RELEASE-0.4.0.zh-CN.md)，双版本复现方法见 [宿主兼容说明](DSH_COMPATIBILITY.md)。
+
+MATLAB、Zotero 可选协同包与配置方法见 [协同插件说明](integrations.md)。旧版兼容维护记录保留在 [CHANGELOG](../CHANGELOG.md) 和 [v0.3.1](https://github.com/InariNGT-Ofiicial/dsh-research-toolkit/releases/tag/v0.3.1)。
