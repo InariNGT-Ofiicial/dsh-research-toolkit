@@ -1,5 +1,9 @@
 # DSH 科研软件桥接插件
 
+[新版 v0.4.0](https://github.com/InariNGT-Ofiicial/dsh-research-toolkit/releases/tag/v0.4.0) · [v0.3.1 兼容维护版](https://github.com/InariNGT-Ofiicial/dsh-research-toolkit/releases/tag/v0.3.1)。
+
+保留 DSH rc.2 / rc.3 的兼容维护与旧版用法，复现方法见 [DSH 兼容说明](docs/DSH_COMPATIBILITY.md)。
+
 **科研软件太难用？让大肥鱼帮你调度。**
 
 用自然语言告诉 DSH 你想研究什么、有哪些数据、需要什么结果，让 Agent 调用本机科研软件，把分析、绘图和报告串起来。

@@ -10,7 +10,7 @@
   "license": "MIT",
   "engines": {
     "node": ">=24",
-    "dsh": ">=0.2.1-rc.2 <=0.2.1-rc.3"
+    "dsh": ">=0.2.1-rc.2 <0.3.0"
   },
   "dsh": {
     "manifestVersion": 1,
@@ -44,7 +44,8 @@
   "scripts": {
     "test:dsh": "node --test tests/dsh-host.test.mjs tests/skill-tool-native.test.mjs",
     "pack:check": "npm pack --dry-run --json",
-    "test:integrations": "node --test tests/integrations.test.mjs"
+    "test:integrations": "node --test tests/integrations.test.mjs",
+    "test:host": "node scripts/test-dsh-host.mjs"
   },
   "keywords": [
     "dsh-plugin",

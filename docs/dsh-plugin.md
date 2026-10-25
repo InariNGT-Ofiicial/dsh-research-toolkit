@@ -2,7 +2,7 @@
 
 This package is a native DSH Cordis bundle, delivered as the npm tarball `dsh-research-toolkit-0.4.0.tgz`. Its `package.json` declares `dsh.manifestVersion: 1` and `dsh.bundle.patch: ./cordis.patch.yml`; the patch inserts the research-toolkit plugin. No installer lifecycle scripts or npm runtime dependencies are needed.
 
-The compatibility declaration is DSH `>=0.2.1-rc.2 <=0.2.1-rc.3`. Both versions passed the native host regression; the current installed host is rc.3.
+The compatibility declaration preserves DSH `>=0.2.1-rc.2 <0.3.0` from the 0.3.1 compatibility maintenance release. rc.2 and rc.3 passed the native host regression; the current installed host is rc.3. Later versions within the declaration are not automatically covered by these test results.
 
 ## Install the reviewed package
 
