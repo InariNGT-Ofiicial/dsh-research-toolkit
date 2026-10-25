@@ -1,6 +1,6 @@
 {
   "name": "dsh-research-toolkit",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Local research software discovery, native job compilation, execution and evidence-based acceptance for DSH",
   "type": "module",
   "main": "./src/index.js",
@@ -10,7 +10,7 @@
   "license": "MIT",
   "engines": {
     "node": ">=24",
-    "dsh": "0.2.1-rc.2"
+    "dsh": ">=0.2.1-rc.2 <=0.2.1-rc.3"
   },
   "dsh": {
     "manifestVersion": 1,
@@ -43,7 +43,8 @@
   ],
   "scripts": {
     "test:dsh": "node --test tests/dsh-host.test.mjs tests/skill-tool-native.test.mjs",
-    "pack:check": "npm pack --dry-run --json"
+    "pack:check": "npm pack --dry-run --json",
+    "test:integrations": "node --test tests/integrations.test.mjs"
   },
   "keywords": [
     "dsh-plugin",
@@ -51,5 +52,10 @@
     "statistics",
     "scientific-computing",
     "local-first"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/InariNGT-Ofiicial/dsh-research-toolkit.git"
+  },
+  "homepage": "https://github.com/InariNGT-Ofiicial/dsh-research-toolkit"
 }

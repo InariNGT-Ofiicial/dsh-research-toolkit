@@ -1,15 +1,15 @@
 # DSH bundle integration
 
-This package is a native DSH Cordis bundle, delivered as the npm tarball `dsh-research-toolkit-0.3.0.tgz`. Its `package.json` declares `dsh.manifestVersion: 1` and `dsh.bundle.patch: ./cordis.patch.yml`; the patch inserts the research-toolkit plugin. No installer lifecycle scripts or npm runtime dependencies are needed.
+This package is a native DSH Cordis bundle, delivered as the npm tarball `dsh-research-toolkit-0.4.0.tgz`. Its `package.json` declares `dsh.manifestVersion: 1` and `dsh.bundle.patch: ./cordis.patch.yml`; the patch inserts the research-toolkit plugin. No installer lifecycle scripts or npm runtime dependencies are needed.
 
-The current compatibility declaration is exactly DSH `0.2.1-rc.2`, the locally inspected and tested host. Change that range only after testing another host version.
+The compatibility declaration is DSH `>=0.2.1-rc.2 <=0.2.1-rc.3`. Both versions passed the native host regression; the current installed host is rc.3.
 
 ## Install the reviewed package
 
 Use the DSH plugin manager to install the local `.tgz` by its absolute path. With the Desktop-installed `dsh` command available, the equivalent command is:
 
 ```powershell
-dsh plugin --profile desktop add "C:\path\to\dsh-research-toolkit-0.2.1.tgz"
+dsh plugin --profile desktop add "C:\path\to\dsh-research-toolkit-0.4.0.tgz"
 ```
 
 Use the command distributed by the Desktop installation for its reserved `desktop` profile. A separately installed npm `dsh` launcher can reject that profile. Where configuration HMR is unavailable, reload or restart DSH after installation. Successful npm installation alone does not establish that a plugin started.
@@ -48,6 +48,7 @@ DSH patch replacement uses a complete `config` row rather than deep-merging fiel
 | Tool | Parameters | Effect |
 |---|---|---|
 | `research_catalog` | `{}` | Read supported engines and operations |
+| `research_integrations` | `{}` | Inspect companion tools visible to the current calling agent; does not execute or bypass their policies |
 | `research_discover` | `{}` | Read local executable discovery |
 | `research_compile` | `{jobPath, workspace?}` | Write native source and compiled plan |
 | `research_run` | `{jobPath, workspace?}` | Execute a real native job in a fresh run directory |

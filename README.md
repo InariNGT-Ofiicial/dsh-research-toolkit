@@ -8,15 +8,15 @@
 
 ## 快速安装
 
-从 [Releases](https://github.com/InariNGT-Ofiicial/dsh-research-toolkit/releases) 下载 `dsh-research-toolkit-0.3.0.tgz`，或使用仓库 `dist/` 中的同一份包，在 DSH 插件管理器中导入并启用。
+从 [Releases](https://github.com/InariNGT-Ofiicial/dsh-research-toolkit/releases) 下载 `dsh-research-toolkit-0.4.0.tgz`，或使用仓库 `dist/` 中的同一份包，在 DSH 插件管理器中导入并启用。
 
 使用 DSH Desktop 随附命令行也可以安装：
 
 ```powershell
-dsh plugin --profile desktop add "C:\Downloads\dsh-research-toolkit-0.3.0.tgz"
+dsh plugin --profile desktop add "C:\Downloads\dsh-research-toolkit-0.4.0.tgz"
 ```
 
-运行环境：Windows、Node.js 24+、DSH 0.2.1-rc.2；Python 及对应科研软件需单独安装。插件配置项为 `pythonPath`、`workspaceRoot`、`maxTimeoutSeconds`。软件位置可通过 `research_discover` 检查；详情见 [安装与配置](docs/dsh-plugin.md)。
+运行环境：Windows、Node.js 24+、DSH 0.2.1-rc.2 / rc.3；Python 及对应科研软件需单独安装。插件配置项为 `pythonPath`、`workspaceRoot`、`maxTimeoutSeconds`。软件位置可通过 `research_discover` 检查；详情见 [安装与配置](docs/dsh-plugin.md)。
 
 ## 在 DSH 中这样开始
 
@@ -26,17 +26,22 @@ dsh plugin --profile desktop add "C:\Downloads\dsh-research-toolkit-0.3.0.tgz"
 
 简报结束后，Agent 询问：**“是否为这些软件建立或完善桥接？你希望优先接入哪些？”** 用户确定范围后，再配置已有适配器，或按指南研究新的桥接接口；之后由用户提出自己的研究任务。
 
-插件提供以下五个工具，分别用于环境检查和后续任务执行：
+插件提供以下六个工具，分别用于环境检查和后续任务执行：
 
 | 工具 | 用途 |
 |---|---|
 | `research_catalog` | 查看支持的软件与操作 |
+| `research_integrations` | 查看当前 Agent 可见的 MATLAB MCP、Zotero 协同工具与真实参数 |
 | `research_discover` | 发现本机可用程序 |
 | `research_compile` | 生成原生脚本和运行计划 |
 | `research_run` | 调用软件并保存输出 |
 | `research_acceptance_report` | 读取执行与产物核验记录 |
 
 后续研究作业的格式见 [作业契约](docs/jobs.md)。[MATLAB 弹簧链任务](scenarios/chain_dynamics/jobs) 和 [统计学示例](scenarios/statistics) 用于开发核查、回归与验收，可供适配器开发者参考。
+
+## 协同插件
+
+0.4.0 增加同类插件协同入口，接入 MATLAB 官方 MCP 服务及社区 Zotero 工具。先用 `research_integrations` 查询实际注册情况，再由 Agent 直接调用相应工具；原有原生任务仍使用 `research_compile` / `research_run`。见 [协同插件安装](docs/integrations.md) 和 [完整 29 项软件清单](docs/supported-software.md)。
 
 ## 软件范围
 

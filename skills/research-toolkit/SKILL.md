@@ -7,6 +7,26 @@ description: "Compile and run reproducible jobs in installed research software, 
 
 Use `research_catalog` to learn the supported job schema and native operations, then `research_discover` to establish the current local environment. Keep the user's requested research method and target software explicit in a job JSON file.
 
+For first-time setup, also call `research_integrations`. Summarize local software,
+available operations, missing dependencies and registered companion tools in a
+short briefing, then ask which software the user wants to bridge. Discovery does
+not authorize an unrelated benchmark. When the user has already selected a scope,
+continue within that authorization instead of asking again.
+
+`research_integrations` returns the actual tool names and schemas visible to the
+calling agent. Prefer registered `mcp__matlab__*` tools for interactive MATLAB,
+Code Analyzer and MATLAB unit tests, and `zotero_*` tools for collections, richer
+literature searches, notes and PDF fulltext. Call each external tool by its own
+name through DSH so its policy, approval and output schema remain in effect.
+Use `research_compile` / `research_run` for reproducible native job files and
+artifact acceptance. Companion registration is not application verification;
+report disconnected servers, missing toolboxes and license failures explicitly.
+Only claim Simulink support when the relevant model tools are registered and
+the requested licensed operation has actually passed. Zotero note writes require
+a user-requested write; a software briefing does not authorize library edits.
+See [companion integrations](../../docs/integrations.md) for pinned sources,
+installation, conflicts and the acceptance boundary.
+
 `research_compile` turns a job file into native source and a plan inside the configured workspace. Compilation can succeed while an engine is unavailable: inspect `data.ready` and the missing requirements. A compiled script is not evidence that a program ran.
 
 `research_run` executes that job in the real software and retains its scripts, logs and artifacts. Inspect both the outer `ok`/`exitCode` and the canonical `data` result. Exit 0 means the CLI succeeded, exit 2 means a blocked dependency, and exit 1 means failure. Do not relabel a blocked adapter, dry run, source-only job, or substituted program as passed in the named software.

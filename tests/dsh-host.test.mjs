@@ -80,10 +80,10 @@ try {
     assert.deepEqual(Object.keys(entries[0].config).sort(), ['maxTimeoutSeconds','pythonPath','workspaceRoot']);
     evidence.bundle = { manifest: manifest.name + '@' + manifest.version, patchFiles: host.appBoot.bundlePatchPaths(ROOT,manifest.dsh.bundle),entries };
   });
-  await check('Native Cordis registers all five wire schemas and the bundled skill', async () => {
+  await check('Native Cordis registers all six wire schemas and the bundled skill', async () => {
     assert.deepEqual(ctx.tools.schemas().map((x) => x.name).sort(), [
-      'research_acceptance_report', 'research_catalog', 'research_compile', 'research_discover', 'research_run',
-    ]);
+      'research_acceptance_report', 'research_catalog', 'research_compile', 'research_discover', 'research_run', 'research_integrations',
+    ].sort());
     for (const schema of ctx.tools.schemas()) host.tools.assertSupportedJsonSchema(schema.parameters);
     const loaded = await ctx.skills.get('research-toolkit', { cwd: WORK });
     assert.ok(loaded.content.includes('research_compile'));

@@ -29,3 +29,19 @@ THE SOFTWARE.
 Research applications, Python/Julia/Octave/R runtimes, DSH host code, commercial
 licenses and user libraries are not bundled. Their own licenses apply. The host
 test extracts installed DSH modules into a local test cache only.
+
+## Companion integrations added in 0.4.0
+
+The optional MATLAB bundle is `lovedheart/dsh-matlab-mcp-plugin` 1.0.0 at
+`d732d36ea281c9dfd59e3039c27559653c28e9ff`, Apache-2.0. Its own LICENSE is
+retained in the separately distributed companion tarball. The MathWorks MATLAB
+MCP server v0.15.0 is obtained separately from its official repository.
+
+The optional Zotero package derives from `Hongcheng-LI/dsh-zotero` 0.2.2 at
+`e4042d5139aa81d810b95928d63632f80a32a7ac`, MIT, copyright lhc.
+The local `0.2.2-research.1` compatibility patch removes undefined optional
+object fields at the native tool result boundary and rejects non-JSON values.
+Original request logic and policy routing are preserved. Both compiled and
+TypeScript source are patched. The original MIT license is retained in that
+tarball and in `docs/compatibility/ZOTERO-LICENSE.md`; the source change is
+documented in `docs/compatibility/zotero-lossless-json.patch.md`.

@@ -3,6 +3,7 @@ import { randomUUID } from 'node:crypto';
 import { existsSync, readFileSync, realpathSync } from 'node:fs';
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { integrationSnapshot } from './integrations.js';
 
 export const name = 'research-toolkit';
 export const inject = ['tools'];
@@ -174,6 +175,19 @@ export async function apply(ctx, config = {}) {
   add('research_compile', 'Compile a research job JSON into native scripts and a reproducible plan in a fresh directory. Missing software may still produce source with ready=false; this is not execution evidence.', jobArgs, false, (args) => ['compile', resolve(args.jobPath), '--workspace', join(workspaceFor(cfg, args), `compile-${Date.now()}-${randomUUID().slice(0, 8)}`)]);
   add('research_run', 'Execute a compiled research job in its real local software, retaining native scripts, logs, artifacts and verification evidence. Unavailable engines return blocked rather than simulated success.', jobArgs, false, (args) => ['run', resolve(args.jobPath), '--workspace', workspaceFor(cfg, args), '--max-timeout', String(cfg.maxTimeoutSeconds)]);
   add('research_acceptance_report', 'Read and verify a saved research acceptance directory. Report passed, failed and blocked software separately; a generated script alone cannot establish a passed run.', reportArgs, true, (args) => ['verify', resolve(args.acceptanceDir), '--json']);
+  tools.register({
+    name: 'research_integrations',
+    description: 'Inspect companion MATLAB MCP and Zotero tools visible to this agent, including their real input schemas. Call available tools directly under native DSH policy; registration alone does not prove application execution.',
+    parameters: emptyArgs,
+    isConcurrencySafe: () => true,
+    output: { schema: OUTPUT_SCHEMA, render: (_args, value) => [{ type: 'text', text: JSON.stringify(value, null, 2) }] },
+    async execute(args, exec) {
+      validateArgs(args, emptyArgs);
+      const started = Date.now();
+      return { ok: true, status: 'passed', exitCode: 0, command: [],
+        data: integrationSnapshot(tools, exec?.agent), diagnostics: '', durationMs: Date.now() - started };
+    },
+  });
   if (typeof ctx.inject === 'function') ctx.inject(['skills'], (skillCtx) => {
     for (const skill of SKILLS) {
       const path = join(ROOT, 'skills', skill.name, 'SKILL.md');
