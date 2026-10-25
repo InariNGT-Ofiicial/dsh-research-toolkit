@@ -1,4 +1,4 @@
 5a36fd1b0e27223098f7fe29e5eb78386b40bc8e309868dd5b2f02049d78d254  dsh-research-toolkit-0.3.0.tgz
-0f7872a15c10e4d1a910203bac248480e441e55fc2410d5aab5605ece5e7a914  dsh-research-toolkit-0.4.0.tgz
+006e987d149dec561d945eb9b448c3cf08d4356253acf018b1fe01660863ad79  dsh-research-toolkit-0.4.0.tgz
 8652596f80dee48dcd1f4334e19fd731e244a15aa6dcc0af35408e703bac7402  dsh-zotero-0.2.2-research.1.tgz
 33f3079a91d9d9372594d9f0a8f7a6936814ad00291f1c18b5920e8f28351eb4  lovedheart-dsh-matlab-mcp-plugin-1.0.0.tgz
